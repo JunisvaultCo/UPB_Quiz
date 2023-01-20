@@ -1,0 +1,133 @@
+{
+    "list": [
+        {
+            "name": "DFAs",
+            "questions": [
+                {
+                    "text":"Care dintre urmatoarele cuvinte sunt acceptate de urmatorul AFD:",
+                    "img": "DFAs.png",
+                    "options": [
+                        "ABAB",
+                        "ABCD",
+                        "ABAC",
+                        "ABACAC",
+                        "ABABAB",
+                        "ABACACAC",
+                        "ABACABAC",
+                        "ABABACACAC"
+                    ],
+                    "correct": [
+                        "ABACAC",
+                        "ABACACAC",
+                        "ABABACACAC"
+                    ]
+                },
+                {
+                    "text":"Care dintre urmatoarele afirmatii sunt adevarate privitor la AFD-ul din poza:",
+                    "options": [
+                        "Starea initiala este 0",
+                        "K = {0, 1, 2, 3, 4, 5, 6, 7}",
+                        "Alfabetul este {A,B,C}",
+                        "Functia delta este totala",
+                        "F = {7}"
+                    ],
+                    "correct": [
+                        "Starea initiala este 0",
+                        "K = {0, 1, 2, 3, 4, 5, 6, 7}",
+                        "Alfabetul este {A,B,C}",
+                        "Functia delta este totala",
+                        "F = {7}"
+                    ]
+                },
+                {
+                    "text":"Configuratia accesibila din doi pasi, din (4,BACABA) este:",
+                    "options": [
+                        "(4,BACABA)",
+                        "(7,BACABA)",
+                        "(8,BACABA)",
+                        "(7,epsilon)",
+                        "(8,epsilon)",
+                        "(4,CABA)",
+                        "(4,BACA)",
+                        "(8,BACA)"
+                    ],
+                    "correct": [
+                        "(4,CABA)"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "NFA",
+            "questions": [
+                {
+                    "text":"Care afirmatii sunt adevarate relativ la urmatorul AF:",
+                    "img": "NFA.png",
+                    "options": [
+                        "AF-ul este determinist",
+                        "AF-ul este nedetermnist",
+                        "ABCABC este acceptat",
+                        "ABCBCB este acceptat"
+                    ],
+                    "correct": [
+                        "AF-ul este nedetermnist",
+                        "ABCABC este acceptat",
+                        "ABCBCB este acceptat"
+                    ]
+                },
+                {
+                    "text":"Sa presupunem ca am construit un AFN aplicand algoritmul de transformare asupra regex-ului A U (BC)*. AFN-ul rezultat va avea:",
+                    "img": "NFA.png",
+                    "options": [
+                        "6 stari",
+                        "7 stari",
+                        "8 stari",
+                        "9 stari",
+                        "10 stari",
+                        "11 stari",
+                        "12 stari"
+                    ],
+                    "correct": [
+                        "10 stari"
+                    ]
+                },
+                {
+                    "text":"Sa presupunem ca am construit un AFN aplicand algoritmul de transformare asupra regex-ului A U (BC)*. AFN-ul rezultat va avea:",
+                    "img": "NFA.png",
+                    "options": [
+                        "6 tranzitii",
+                        "7 tranzitii",
+                        "8 tranzitii",
+                        "9 tranzitii",
+                        "10 tranzitii",
+                        "11 tranzitii",
+                        "12 tranzitii"
+                    ],
+                    "correct": [
+                        "12 tranzitii"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Subset construction",
+            "questions": [
+                {
+                    "text":"Cate stari accesibile (inclusiv sink states) si stari finale are AFD-ul obtinut din transformarea urmatorului AFN, folosind algoritmul Subset?",
+                    "img": "Subset Construction.png",
+                    "options": [
+                        "AF-ul este determinist",
+                        "AF-ul este nedetermnist",
+                        "ABCABC este acceptat",
+                        "ABCBCB este acceptat"
+                    ],
+                    "correct": [
+                        "AF-ul este nedetermnist",
+                        "ABCABC este acceptat",
+                        "ABCBCB este acceptat"
+                    ]
+                }
+            ]
+        }
+    ]
+}
