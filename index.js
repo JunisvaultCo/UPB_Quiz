@@ -1,4 +1,9 @@
 
+function changePage(btn)
+{
+
+}
+
 let tests;
 let xhr = new XMLHttpRequest();
 xhr.open('GET', 'list.json', true);
@@ -19,9 +24,7 @@ btn.type= 'button';
 btn.id='all';
 btn.value='Run All';
 
-btn.addEventListener('click', function(e)
-{
-});
+btn.addEventListener('click', changePage);
 content.insertBefore(btn,content.childNodes[0]);
 let lastBtn = btn;
 for (let i = 0; i < tests.length; i++) {
@@ -30,5 +33,6 @@ for (let i = 0; i < tests.length; i++) {
     btn.type= 'button';
     btn.id=tests[i].name;
     btn.value='Run ' + btn.id;
+    btn.addEventListener('click', changePage);
     content.insertAfter(btn, lastBtn);
 }
