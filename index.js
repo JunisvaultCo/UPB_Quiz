@@ -1,7 +1,7 @@
 
 function changePage(btn)
 {
-
+    console.log(btn);
 }
 
 let tests;
