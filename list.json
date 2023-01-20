@@ -70,7 +70,7 @@
                         "ABCBCB este acceptat"
                     ],
                     "correct": [
-                        "AF-ul este nedetermnist",
+                        "AF-ul este nedeterminist",
                         "ABCABC este acceptat",
                         "ABCBCB este acceptat"
                     ]
@@ -116,15 +116,48 @@
                     "text":"Cate stari accesibile (inclusiv sink states) si stari finale are AFD-ul obtinut din transformarea urmatorului AFN, folosind algoritmul Subset?",
                     "img": "Subset Construction.png",
                     "options": [
-                        "AF-ul este determinist",
-                        "AF-ul este nedetermnist",
-                        "ABCABC este acceptat",
-                        "ABCBCB este acceptat"
+                        "o stare accesibila",
+                        "o stare finala",
+                        "2 stari accesibile",
+                        "2 stari finale",
+                        "3 stari accesibile",
+                        "3 stari finale",
+                        "4 stari accesibile",
+                        "4 stari finale",
+                        "5 stari accesibile",
+                        "5 stari finale",
+                        "6 stari accesibile",
+                        "6 stari finale",
+                        "7 stari accesibile",
+                        "7 stari finale"
                     ],
                     "correct": [
-                        "AF-ul este nedetermnist",
-                        "ABCABC este acceptat",
-                        "ABCBCB este acceptat"
+                        "o stare finala",
+                        "5 stari accesibile"
+                    ]
+                },
+                {
+                    "text":"Transformati urmatoarea expresie regulata A(BA)* in AFN, si apoi in AFD. Cate stari accesibile (inclusiv sink states) si finale contine acesta din urma?",
+                    "img": "Subset Construction.png",
+                    "options": [
+                        "o stare accesibila",
+                        "o stare finala",
+                        "2 stari accesibile",
+                        "2 stari finale",
+                        "3 stari accesibile",
+                        "3 stari finale",
+                        "4 stari accesibile",
+                        "4 stari finale",
+                        "5 stari accesibile",
+                        "5 stari finale",
+                        "6 stari accesibile",
+                        "6 stari finale",
+                        "7 stari accesibile",
+                        "7 stari finale"
+                    ],
+                    "correct": [
+                        "2 stari finale",
+                        "5 stari accesibile"
                     ]
                 }
             ]
