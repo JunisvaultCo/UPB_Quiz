@@ -65,7 +65,7 @@ var list = {
                     "img": "NFA.png",
                     "options": [
                         "AF-ul este determinist",
-                        "AF-ul este nedetermnist",
+                        "AF-ul este nedeterminist",
                         "ABCABC este acceptat",
                         "ABCBCB este acceptat"
                     ],

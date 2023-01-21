@@ -1,5 +1,7 @@
 let isAll = false;
 let currentTest;
+let correct = 0;
+let soFar = 0;
 
 function clear() 
 {
@@ -12,9 +14,11 @@ function clear()
 function openTest()
 {
     clear();
+    soFar += tests[currentTest].questions.length;
     let content = document.getElementById("body");
     for (let i = 0; i < tests[currentTest].questions.length; i++) {
         let question = document.createElement('div');
+        question.id = "question" + i;
         question.innerHTML = tests[currentTest].questions[i].text;
         question.appendChild(document.createElement("br"));
         if (tests[currentTest].questions[i].img !== undefined) {
@@ -31,6 +35,7 @@ function openTest()
             question.appendChild(option);
             let label = document.createElement("label");
             label.for = option.id;
+            label.id = "l_" + option.id;
             label.innerHTML = tests[currentTest].questions[i].options[j];
             question.appendChild(label);
             question.appendChild(document.createElement("br"));
@@ -52,8 +57,38 @@ function gradeTest()
     let content = document.getElementById("body");
     content.removeChild(document.getElementById("grade"));
     for (let i = 0; i < tests[currentTest].questions.length; i++) {
-        
+        let questionEle = document.getElementById("question" + i);
+        let correctInQuestion = 0;
+        for (let j = 0; j < tests[currentTest].questions[i].options.length; j++) {
+            let option = tests[currentTest].questions[i].options[j];
+            let shouldBeChecked = tests[currentTest].questions[i].correct.find((v) => v === option) !== undefined;
+            let optionEle = document.getElementById(i + "_" + j);
+            let labelEle = document.getElementById("l_" + i + "_" + j);
+            console.log(shouldBeChecked + " " + optionEle.checked);
+            if (shouldBeChecked) {
+                labelEle.style.backgroundColor = "green";
+            } else {
+                labelEle.style.backgroundColor = "red";
+            }
+            if (shouldBeChecked == optionEle.checked)
+                correctInQuestion++;
+        }
+        let correctness = document.createElement("div");
+        correctness.innerHTML = "Incorrect!";
+        correctness.style.backgroundColor = "red";
+        if (correctInQuestion == tests[currentTest].questions[i].options.length) {
+            correct++;
+            correctness.style.backgroundColor = "green";
+            correctness.innerHTML = "Correct!";
+        }
+        questionEle.appendChild(correctness);
     }
+    let soFarDiv = document.createElement("div");
+    if (isAll)
+        soFarDiv.innerHTML = "So far: " + correct + " / " + soFar;
+    else
+        soFarDiv.innerHTML = "Test result: " + correct + " / " + soFar;
+    content.appendChild(soFarDiv);
     if (isAll && currentTest !== tests.length - 1) {
         let btn = document.createElement('input');
         btn.type= 'button';
@@ -76,6 +111,8 @@ function gradeTest()
 function changePage(event)
 {
     let id = event.srcElement.id;
+    correct = 0;
+    soFar = 0;
     if (id !== "all") {
         if (id.startsWith("Matei: ")) {
             id = id.split("Matei: ")[1];
