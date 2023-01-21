@@ -17,7 +17,7 @@ xhr.onreadystatechange = function()
 xhr.send();
 console.log(tests);
 
-let content = document.getElementById("body");
+let content = document.getElementsByTagName("body")[0];
 let btn = document.createElement('input');
 
 btn.type= 'button';
