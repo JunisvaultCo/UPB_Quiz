@@ -51,7 +51,7 @@ var list = {
                         "(7,BACA)"
                     ],
                     "correct": [
-                        "(4,CABA)"
+                        "(3,CABA)"
                     ]
                 }
             ]
