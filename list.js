@@ -29,27 +29,26 @@ var list = {
                         "K = {0, 1, 2, 3, 4, 5, 6, 7}",
                         "Alfabetul este {A,B,C}",
                         "Functia delta este totala",
-                        "F = {7}"
+                        "F = {6}"
                     ],
                     "correct": [
                         "Starea initiala este 0",
                         "K = {0, 1, 2, 3, 4, 5, 6, 7}",
                         "Alfabetul este {A,B,C}",
-                        "Functia delta este totala",
-                        "F = {7}"
+                        "F = {6}"
                     ]
                 },
                 {
-                    "text":"Configuratia accesibila din doi pasi, din (4,BACABA) este:",
+                    "text":"Configuratia accesibila din doi pasi, din (3,BACABA) este:",
                     "options": [
-                        "(4,BACABA)",
+                        "(3,BACABA)",
+                        "(6,BACABA)",
                         "(7,BACABA)",
-                        "(8,BACABA)",
+                        "(6,epsilon)",
                         "(7,epsilon)",
-                        "(8,epsilon)",
-                        "(4,CABA)",
-                        "(4,BACA)",
-                        "(8,BACA)"
+                        "(3,CABA)",
+                        "(3,BACA)",
+                        "(7,BACA)"
                     ],
                     "correct": [
                         "(4,CABA)"
