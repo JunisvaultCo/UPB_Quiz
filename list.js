@@ -303,8 +303,7 @@ var list = {
                     ],
                     "correct": [
                         "Accepta prin stiva vida",
-                        "Alfabetul stivei este {X,Z0}",
-                        "Exista mai multe stari succesor pentru aceeasi combinatie stare, simbol-input, simbol-stiva"
+                        "Alfabetul stivei este {X,Z0}"
                     ]
                 },
                 {
