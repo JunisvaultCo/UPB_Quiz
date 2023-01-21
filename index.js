@@ -64,7 +64,6 @@ function gradeTest()
             let shouldBeChecked = tests[currentTest].questions[i].correct.find((v) => v === option) !== undefined;
             let optionEle = document.getElementById(i + "_" + j);
             let labelEle = document.getElementById("l_" + i + "_" + j);
-            console.log(shouldBeChecked + " " + optionEle.checked);
             if (shouldBeChecked) {
                 labelEle.style.backgroundColor = "green";
             } else {
