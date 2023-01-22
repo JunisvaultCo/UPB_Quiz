@@ -35,7 +35,6 @@ var list = {
                         "Starea initiala este 0",
                         "K = {0, 1, 2, 3, 4, 5, 6, 7}",
                         "Alfabetul este {A,B,C}",
-                        "Functia delta este totala",
                         "F = {6}"
                     ]
                 },
