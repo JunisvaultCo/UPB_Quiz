@@ -58,6 +58,55 @@ var list = {
             ]
         },
         {
+            "name": "Regex (partial, more coming soon)",
+            "questions": [
+                {
+                    "text":"Scrieti o expresie regulata care genereaza limbajul acceptat de automatul finit determinist din imagine. <br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
+                    "img": "Regex.png",
+            //        "isField": true,
+            //        "correctSuggestion": "(01)*001*"
+                    "options": [
+                    ],
+                    "correct": [
+                    ]
+                },
+                {
+                    "text":"Selectati din lista de mai jos acele expresii regulate care genereaza acelasi limbaj.",
+                    "options": [
+                        "(0*1*)*",
+                        "0*1*",
+                        "(0 U 1)*",
+                        "1*0*",
+                        "(1*0*)*"
+                    ],
+                    "correct": [
+                        "(0*1*)*",
+                        "(0 U 1)*",
+                        "(1*0*)*"
+                    ]
+                },
+               /* {
+                    "text":"Scrieti o expresie regulata pentru limbajul tuturor cuvintelor binare care incep si se termina cu acelasi bit (0 sau 1). <br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
+                    "isField": true,
+                    "correctSuggestion": "(0(0U1)*0)U(1(0U1)*1)"
+                },*/
+                {
+                    "text":"Fie L limbajul {w in {0,1}*. numarul de 0 din w este egal cu numarul de 1 din w}. Care din urmatoarele afirmatii sunt adevarate?",
+                    "options": [
+                        "L este un limbaj finit",
+                        "L = L*",
+                        "L = {0, 1}*",
+                        "L = {1, 0}*",
+                        "L = LL"
+                    ],
+                    "correct": [
+                        "L = L*",
+                        "L = LL"
+                    ]
+                }
+            ]
+        },
+        {
             "name": "NFA",
             "questions": [
                 {
