@@ -27,17 +27,26 @@ function openTest()
             question.appendChild(img);
             question.appendChild(document.createElement("br"));
         }
-        for (let j = 0; j < tests[currentTest].questions[i].options.length; j++) {
+        if (tests[currentTest].questions[i].isField === undefined
+            || !tests[currentTest].questions[i].isField) {
+            for (let j = 0; j < tests[currentTest].questions[i].options.length; j++) {
+                let option = document.createElement("input");
+                option.type = "checkbox";
+                option.value = i + "_" + j;
+                option.id = i + "_" + j;
+                question.appendChild(option);
+                let label = document.createElement("label");
+                label.for = option.id;
+                label.id = "l_" + option.id;
+                label.innerHTML = tests[currentTest].questions[i].options[j];
+                question.appendChild(label);
+                question.appendChild(document.createElement("br"));
+            }
+        } else {
             let option = document.createElement("input");
-            option.type = "checkbox";
-            option.value = i + "_" + j;
-            option.id = i + "_" + j;
+            option.type = "text";
+            option.id = "t_" + i;
             question.appendChild(option);
-            let label = document.createElement("label");
-            label.for = option.id;
-            label.id = "l_" + option.id;
-            label.innerHTML = tests[currentTest].questions[i].options[j];
-            question.appendChild(label);
             question.appendChild(document.createElement("br"));
         }
         content.appendChild(question);
@@ -55,33 +64,64 @@ function openTest()
 function gradeTest()
 {
     let content = document.getElementById("body");
-    content.removeChild(document.getElementById("grade"));
+    let toDelete = document.getElementsByClassName("delete");
+    for (let i = 0; i < toDelete.length; i++)
+        toDelete[i].parentElement.removeChild(toDelete[i]);
     for (let i = 0; i < tests[currentTest].questions.length; i++) {
-        let questionEle = document.getElementById("question" + i);
-        let correctInQuestion = 0;
-        for (let j = 0; j < tests[currentTest].questions[i].options.length; j++) {
-            let option = tests[currentTest].questions[i].options[j];
-            let shouldBeChecked = tests[currentTest].questions[i].correct.find((v) => v === option) !== undefined;
-            let optionEle = document.getElementById(i + "_" + j);
-            let labelEle = document.getElementById("l_" + i + "_" + j);
-            if (shouldBeChecked) {
-                labelEle.style.backgroundColor = "green";
-            } else {
-                labelEle.style.backgroundColor = "red";
-            }
-            if (shouldBeChecked == optionEle.checked)
-                correctInQuestion++;
-        }
         let correctness = document.createElement("div");
         correctness.innerHTML = "Incorrect!";
         correctness.style.backgroundColor = "red";
-        if (correctInQuestion == tests[currentTest].questions[i].options.length) {
-            correct++;
-            correctness.style.backgroundColor = "green";
-            correctness.innerHTML = "Correct!";
+        correctness.className = "delete";
+        
+        let questionEle = document.getElementById("question" + i);
+        if (tests[currentTest].questions[i].isField !== undefined &&
+                tests[currentTest].questions[i].isField) {
+            let ele = document.getElementById("t_" + i);
+            let value = ele.value;
+            let allowedChars = tests[currentTest].questions[i].allowed;
+            for (let i = 0; i < value.length; i++) {
+                if (allowedChars.find(f => f[0] == value[i]) !== value[i]) {
+                    correctness.innerHTML = "Expresia contine litera ilegala!";
+                    questionEle.appendChild(correctness);
+                    return;
+                }
+            }
+    //        let result = verifyRegex(value, tests[currentTest].questions[i].correctSuggestion);
+            if (tests[currentTest].questions[i].correct.find(f => f === value) === value)
+            {
+                correct++;
+                correctness.style.backgroundColor = "green";
+                correctness.innerHTML = "Correct!";
+            } else {
+                correctness.innerHTML = "Incorrect! Suggestions:<br>";
+                for (let j = 0; j < tests[currentTest].questions[i].correct.length; j++) {
+                    correctness.innerHTML += tests[currentTest].questions[i].correct[j] + "<br>";
+                }
+            }
+        } else {
+            let correctInQuestion = 0;
+            for (let j = 0; j < tests[currentTest].questions[i].options.length; j++) {
+                let option = tests[currentTest].questions[i].options[j];
+                let shouldBeChecked = tests[currentTest].questions[i].correct.find((v) => v === option) !== undefined;
+                let optionEle = document.getElementById(i + "_" + j);
+                let labelEle = document.getElementById("l_" + i + "_" + j);
+                if (shouldBeChecked) {
+                    labelEle.style.backgroundColor = "green";
+                } else {
+                    labelEle.style.backgroundColor = "red";
+                }
+                if (shouldBeChecked == optionEle.checked)
+                    correctInQuestion++;
+            }
+            if (correctInQuestion == tests[currentTest].questions[i].options.length) {
+                correct++;
+                correctness.style.backgroundColor = "green";
+                correctness.innerHTML = "Correct!";
+            }
         }
         questionEle.appendChild(correctness);
     }
+    content.removeChild(document.getElementById("grade"));
     let soFarDiv = document.createElement("div");
     if (isAll)
         soFarDiv.innerHTML = "So far: " + correct + " / " + soFar;
