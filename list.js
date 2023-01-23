@@ -61,9 +61,11 @@ var list = {
             "name": "Regex (hopefully fine)",
             "questions": [
                 {
-                    "text":"Scrieti o expresie regulata care genereaza limbajul acceptat de automatul finit determinist din imagine. <br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
+                    "text":"Scrieti o expresie regulata care genereaza limbajul acceptat de automatul finit determinist din imagine."
+                    + "<br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
                     "img": "Regex.png",
                     "isField": true,
+                    "isRegex": true,
                     "allowed": [
                         "0", "1", "*", "(", ")", "U"
                     ],
@@ -90,8 +92,10 @@ var list = {
                     ]
                 },
                 {
-                    "text":"Scrieti o expresie regulata pentru limbajul tuturor cuvintelor binare care incep si se termina cu acelasi bit (0 sau 1). <br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
+                    "text":"Scrieti o expresie regulata pentru limbajul tuturor cuvintelor binare care incep si se termina cu acelasi bit (0 sau 1). "
+                    + "<br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
                     "isField": true,
+                    "isRegex": true,
                     "allowed": [
                         "0", "1", "*", "(", ")", "U"
                     ],
@@ -549,6 +553,374 @@ var list = {
                     ],
                     "correct": [
                         "w_n = a^nb^na^nb^n"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Examen (slot 1)",
+            "questions": [
+                {
+                    "text":"Fie A un limbaj independent de context si B un limbaj regulat. Care din urmatoarele limbaje sunt independente de context?",
+                    "options": [
+                        "A \\ B",
+                        "BA",
+                        "A intersectat cu B",
+                        "AB",
+                        "B \\ A"
+                    ],
+                    "correct": [
+                        "A \\ B",
+                        "BA",
+                        "A intersectat cu B",
+                        "AB"
+                    ]
+                },
+                {
+                    "text":"Scrieti o expresie regulata care genereaza limbajul numerelor impare codificate in binar care incep si se termina cu acelasi simbol."
+                    + "<br> FOLOSITI DOAR CARACTERELE: {0,1,*,(,),U}. NU FOLOSITI SPATII ALBE.",
+                    "isField": true,
+                    "isRegex": true,
+                    "allowed": [
+                        "0", "1", "*", "(", ")", "U"
+                    ],
+                    "correct": [
+                        "1U1(0U1)*1",
+                        "1U1(1U0)*1",
+                        "1U1(0*1*)*1",
+                        "1U1(1*0*)*1",
+
+                        "1(0U1)*1U1",
+                        "1(1U0)*1U1",
+                        "1(0*1*)*1U1",
+                        "1(1*0*)*1U1"
+                    ]
+                },
+                {
+                    "text":"Care afirmatie este adevarata priviot la urmatorul automat finit:",
+                    "img": "Examen_slot1_1.png",
+                    "options": [
+                        "automatul este unul finit nedeterminist",
+                        "automatul accepta limbajul vid",
+                        "automatul accepta limbajul {w in {a,b}*. #a(w) = 2k, cu k >= 0}",
+                        "automatul accepta limbajul L((ab*a)*)",
+                        "automatul este unul finit determinist",
+                        "functia de tranzitie nu este totala"
+                    ],
+                    "correct": [
+                        "automatul accepta limbajul {w in {a,b}*. #a(w) = 2k, cu k >= 0}",
+                        "automatul este unul finit determinist"
+                    ]
+                },
+                {
+                    "text":"Fie A un automat push-down ce are urmatorul comportament: in momentul in care pozitia k de pe stiva este scrisa,"
+                    + "<br>toate pozitiile anterioare sunt sterse automat si nu mai pot recuperate. Stiind ca fiecarui astfel de automat ii asociem"
+                    + "<br>un numarul natural fix k (notam acest lucru Ak), care sunt toate afirmatiile adevarate despre L(Ak)?",
+                    "options": [
+                        "L este independent de context",
+                        "L este regulat",
+                        "L este dependent de context",
+                        "L este vid",
+                        "L contine doar cuvinte de lungime mai mica sau egala decat k",
+                        "L este finit"
+                    ],
+                    "correct": [
+                        "L este independent de context",
+                        "L este regulat",
+                        "L este dependent de context"
+                    ]
+                },
+                {
+                    "text":"Care din cele de mai jos pot fi folosite pentru a arata ca limbajul {xyx . x in {0,1}* iar y in L(0*)} nu este regulat?",
+                    "options": [
+                        "wn = 0^{2n} cu k = 2",
+                        "wn = 1^n01^n cu k = 2",
+                        "wn = 01^n01^n cu k = 0",
+                        "wn = 10^n1 cu k = 0"
+                    ],
+                    "correct": [
+                        "wn = 1^n01^n cu k = 2"
+                    ]
+                },
+                {
+                    "text":"Care din urmatorii algoritmi au timpul de executie worst-case exponential?",
+                    "options": [
+                        "Algoritmul de conversie a unei expresii regulate la AFD",
+                        "Algoritmul de conversie al unui APD la gramatic independenta de context",
+                        "Algoritmul Brzozovsky de minimizare a unui AFD (min(A) = reverse(det(reverse(det(A))))",
+                        "Algoritmul de conversie a unei gramatici independente de context la APD"
+                    ],
+                    "correct": [
+                        "Algoritmul de conversie a unei expresii regulate la AFD",
+                        "Algoritmul Brzozovsky de minimizare a unui AFD (min(A) = reverse(det(reverse(det(A))))"
+                    ]
+                },
+                {
+                    "text":"Fie N un AFN. Cum putem verifica daca L(N) este un limbaj finit?",
+                    "options": [
+                        "verificam daca N nu contine sink states.",
+                        "verificam daca N contine cai accesibile de la starea initiala la cea finala",
+                        "verificam daca N contine un numar finit de stari",
+                        "verificam daca conversia lui N la AFD contine acelasi numar de stari ca A",
+                        "verificam daca conversia lui N la AFD nu contine cicluri (inafara sink-urilor)"
+                    ],
+                    "correct": [
+                        "verificam daca conversia lui N la AFD nu contine cicluri (inafara sink-urilor)"
+                    ]
+                },
+                {
+                    "text":"Fie gramatica G in Forma Normala Chomsky definita peste alfabetul {a,b}*" +
+                    "<br> astfel: V = {S,X,A,B,a,b} unde S este simbolul de start iar R contine regulile A <- a" +
+                    "<br> si B <- b. Adaugati regulile necesare pentru ca G sa ramana in Forma Normala Chomsky si" +
+                    "<br> sa genereze limbajul {a^nb^m, 1 <= m <= n}" +
+                    "<br> SE VA SCRIE IN FORMA SIMPLA, FARA SPATII SAU LITERE IN PLUS, DOAR LITERE MARI si \<,-|ab",
+                    "isField": true,
+                    "isRegex": false,
+                    "allowed": [
+                        "S", "<", "-", "|", "X", "a", "b", "A", "B",","
+                    ],
+                    "correct": [
+                        "S<-AX|AS|AB,X<-SB",
+                        "S<-AX|AB|AS,X<-SB",
+                        "S<-AB|AX|AS,X<-SB",
+                        "S<-AB|AS|AX,X<-SB",
+                        "S<-AS|AB|AX,X<-SB",
+                        "S<-AS|AX|AB,X<-SB",
+
+                        "X<-SB,S<-AX|AS|AB",
+                        "X<-SB,S<-AX|AB|AS",
+                        "X<-SB,S<-AB|AX|AS",
+                        "X<-SB,S<-AB|AS|AX",
+                        "X<-SB,S<-AS|AB|AX",
+                        "X<-SB,S<-AS|AX|AB",
+
+                        
+                        "S<-AX|AS|a,X<-SB",
+                        "S<-AX|a|AS,X<-SB",
+                        "S<-a|AX|AS,X<-SB",
+                        "S<-a|AS|AX,X<-SB",
+                        "S<-AS|a|AX,X<-SB",
+                        "S<-AS|AX|a,X<-SB",
+
+                        "X<-SB,S<-AX|AS|a",
+                        "X<-SB,S<-AX|a|AS",
+                        "X<-SB,S<-a|AX|AS",
+                        "X<-SB,S<-a|AS|AX",
+                        "X<-SB,S<-AS|a|AX",
+                        "X<-SB,S<-AS|AX|a"
+                    ]
+                },
+                {
+                    "text":"Care afirmatie este adevarata privitor la urmatorul automat cu stiva A:",
+                    "img":"Examen_slot1_2.png",
+                    "options": [
+                        "A accepta prin stare finala toate cuvintele w, pentru care #a(w) \> #b(w)",
+                        "A accepta prin stiva vida toate cuvintele w, pentru care #a(w) = #b(w)",
+                        "A accepta prin stiva vida toate cuvintele w, pentru care #a(w) \> #b(w)",
+                        "A accepta prin stare finala toate cuvintele w, pentru care #a(w) \< #b(w)",
+                        "A accepta prin stiva vida toate cuvintele w, pentru care #b(w) \> #a(w)",
+                        "A accepta prin stare finala toate cuvintele w, pentru care #a(w) = #b(w)"
+                    ],
+                    "correct": [
+                        "A accepta prin stare finala toate cuvintele w, pentru care #a(w) \> #b(w)",
+                        "A accepta prin stiva vida toate cuvintele w, pentru care #b(w) \> #a(w)"
+                    ]
+                },
+                {
+                    "text":"Care din urmatoarele gramatici sunt ambigue?",
+                    "options": [
+                        "S <- abS | Sba | aS | epsilon",
+                        "S <- aS | Sa | epsilon",
+                        "S <- aSb | bSa | epsilon",
+                        "S <- aS | Sb | SS | epsilon"
+                    ],
+                    "correct": [
+                        "S <- abS | Sba | aS | epsilon",
+                        "S <- aS | Sa | epsilon",
+                        "S <- aS | Sb | SS | epsilon"
+                    ]
+                },
+                {
+                    "text":"Fie o gramatica G avand doi non-terminali (S si X) si regulile:"
+                    + "<br> S<-bS|X|epsilon. Definiti o regula pentru X astfel incat G sa"
+                    + "<br> genereze limbajul acceptat de AF-ul de mai jos.",
+                    "img":"Examen_slot1_1.png",
+                    "isField": true,
+                    "isRegex": false,
+                    "allowed": [
+                        "S", "<", "-", "X", "a", "b", ","
+                    ],
+                    "correct": [
+                        "X<-aSaS"
+                    ]
+                },
+                {
+                    "text":"Fie A un Automat Finit Determinist si B rezultatul aplicari unui algoritm de" 
+                    + "<br>minimizare asupra A. Care afirmatii sunt adevarate?",
+                    "options": [
+                        "L(A) = L(B)",
+                        "L(B) este un limbaj regulat",
+                        "daca numarul de stari al lui B este egal cu cel al lui A, atunci A este un automat minimal",
+                        "B poate avea un numar exponential de stari in raport cu A",
+                        "numarul de stari al lui B este mai mic sau egal cu al lui A"
+                    ],
+                    "correct": [
+                        "L(A) = L(B)",
+                        "L(B) este un limbaj regulat",
+                        "daca numarul de stari al lui B este egal cu cel al lui A, atunci A este un automat minimal",
+                        "numarul de stari al lui B este mai mic sau egal cu al lui A"
+                    ]
+                },
+                {
+                    "text":"Fie G o gramatica in Forma Normala Chomsky, si w un cuvant din L(G). Care afirmatii sunt adevarate?",
+                    "options": [
+                        "|w| <= 2^h - 1 (lungimea lui w), unde h este adancimea arborelui de parsare",
+                        "fiecare nod din arborele de parsare are cel mult doi copii",
+                        "fiecare nod din arborele de parsare are exact doi copii",
+                        "oricare derivare a cuvantului w este o derivare stanga"
+                    ],
+                    "correct": [
+                        "|w| <= 2^h - 1 (lungimea lui w), unde h este adancimea arborelui de parsare",
+                        "fiecare nod din arborele de parsare are cel mult doi copii"
+                    ]
+                },
+                {
+                    "text":"Fie urmatoarea gramatica independenta de context: S <- 0S1S | X | epsilon"
+                    + "<br> Definiti o regula pentru X astfel incat gramatica sa genereze limbajul binar in"
+                    + "<br> care numarul de biti 0 este egal cu numarul de biti 1",
+                    "isField": true,
+                    "isRegex": false,
+                    "allowed": [
+                        "S", "<", "-", "X", "1", "0", ","
+                    ],
+                    "correct": [
+                        "X<-1S0S"
+                    ]
+                },
+                {
+                    "text":"Care din cele de mai jos sunt limbaje regulate?",
+                    "options": [
+                        "L = {uv, unde u,v apartin L(A), iar A este un Automat Finit Determinist}",
+                        "{w in {0,1}*, w este un palindrom de lungime impara}",
+                        "{w . w este cel mai lung prefix comun al cuvintelor u,v unde u apartine A, v apartine B, iar A si B sunt limbaje regulate}",
+                        "L = {w in {0,1}*, unde #0(w) > #1(w)}",
+                        "orice limbaj definit peste un alfabet cu un singur simbol"
+                    ],
+                    "correct": [
+                        "L = {uv, unde u,v apartin L(A), iar A este un Automat Finit Determinist}",
+                        "{w . w este cel mai lung prefix comun al cuvintelor u,v unde u apartine A, v apartine B, iar A si B sunt limbaje regulate}"
+                    ]
+                },
+                {
+                    "text":"Care din cele de mai jos sunt proprietati de inchidere pentru limbaje independente de context?",
+                    "options": [
+                        "Kleene Star",
+                        "reuniunea cu un limbaj regulat",
+                        "intersectia",
+                        "reverse",
+                        "concatenarea"
+                    ],
+                    "correct": [
+                        "Kleene Star",
+                        "reuniunea cu un limbaj regulat",
+                        "reverse",
+                        "concatenarea"
+                    ]
+                },
+                {
+                    "text":"Fie limbajul A={ww^R}, B = L(0*1*) si C = A intersectat cu B. Care din urmatoarele afirmatii sunt adevarate privitor la C?",
+                    "options": [
+                        "C contine doar cuvinte de lungime para",
+                        "C continue un numar de 0 egal cu numarul de 1",
+                        "C este un limbaj regulat",
+                        "putem folosi cuvantul 0^n1^{2n}0^n pentru a demonstra folosind lema de pompare ca limbajul C este independent de context"
+                    ],
+                    "correct": [
+                        "C contine doar cuvinte de lungime para",
+                        "C este un limbaj regulat"
+                    ]
+                },
+                {
+                    "text":"Care din urmatorii algoritmi au timpul de executie worst-case exponential?",
+                    "options": [
+                        "Algoritmul CYK de verificare a apartenentei unui cuvant w la limbajul L(G) a unei gramatici date",
+                        "Algoritmul de minimizare bazat pe echivalenta starilor",
+                        "Algoritmul Subset Construction de conversie a unui AFN intr-un AFD",
+                        "Algoritmul Thomson de conversie a unei expresii regulate intr-un AFN"
+                    ],
+                    "correct": [
+                        "Algoritmul Subset Construction de conversie a unui AFN intr-un AFD"
+                    ]
+                },
+                {
+                    "text":"Care din urmatoarele masini pot accepta limbajul {ww . w in {0,1}*}?",
+                    "options": [
+                        "Automat Finit Nedeterminist",
+                        "Masina Turing",
+                        "Automat Finit Determinist",
+                        "Automat Push-Down (cu stiva)"
+                    ],
+                    "correct": [
+                        "Masina Turing"
+                    ]
+                },
+                {
+                    "text":"Care din afirmatiile urmatoare sunt adevarate cu privire la simbolul ⊦ (one-step),"
+                    + "<br> definit la Automate Push-Down (APD)?",
+                    "options": [
+                        "⊦ defineste multimea simbolilor stivei unui APD",
+                        "⊦ defineste functia de tranzitie a unui APD",
+                        "⊦ este folosita pentru a descrie efectul unei tranzitii a unui APD",
+                        "⊦ este folosita pentru a descrie continutul stivei in timpul computatiei unui APD",
+                        "⊦ este o relatie binara peste configuratiile unui APD"
+                    ],
+                    "correct": [
+                        "⊦ este folosita pentru a descrie efectul unei tranzitii a unui APD",
+                        "⊦ este o relatie binara peste configuratiile unui APD"
+                    ]
+                },
+                {
+                    "text":"Alegeti un cuvant si o valoare k cu care putem demonstra folosind lema de"
+                    + "<br> pompare ca limbajul A intersectat cu B nu este regulat. A = {ww^R . w in {0,1}*}"
+                    + "<br> iar B = {ww . w in {0,1}*}. Scrieti raspunsul sub forma wn=...,k=... unde w_n va"
+                    + "<br> contine numere si semnul ^ iar k va fi un numar.",
+                    "isField": true,
+                    "isRegex": false,
+                    "allowed": [
+                        "w", "n", "k", "=", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "^", ","
+                    ],
+                    "correct": [
+                        "wn=0^n1^2n0^n,k=0",
+                        "wn=0^n10^2n10^n,k=0"
+                    ]
+                },
+                {
+                    "text":"Care afirmatie este adevarata privitor la urmatorul automat finit:",
+                    "img": "Examen_slot1_3.png",
+                    "options": [
+                        "automatul este finit determinist",
+                        "automatul este minimal",
+                        "algoritmul subset construction va genera (inclusiv sink-states) 4 stari accesibile",
+                        "algoritmul subset construction va genera (inclusiv sink-states) 3 stari accesibile",
+                    ],
+                    "correct": [
+                        "algoritmul subset construction va genera (inclusiv sink-states) 4 stari accesibile"
+                    ]
+                },
+                {
+                    "text":"Care din urmatoarele expresii regulate sunt echivalente?",
+                    "options": [
+                        "(0*1*)*",
+                        "(0*1 U 1*0)*",
+                        "((00)* U (11)*)*",
+                        "(0 U 1)*",
+                        "(0*(0 U 1)1*)*"
+                    ],
+                    "correct": [
+                        "(0*1*)*",
+                        "(0*1 U 1*0)*",
+                        "(0 U 1)*",
+                        "(0*(0 U 1)1*)*"
                     ]
                 }
             ]
