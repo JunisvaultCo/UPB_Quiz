@@ -67,6 +67,7 @@ function gradeTest()
     let toDelete = document.getElementsByClassName("delete");
     for (let i = 0; i < toDelete.length; i++)
         toDelete[i].parentElement.removeChild(toDelete[i]);
+    let thisRoundCorrect = 0;
     for (let i = 0; i < tests[currentTest].questions.length; i++) {
         let correctness = document.createElement("div");
         correctness.innerHTML = "Incorrect!";
@@ -89,7 +90,7 @@ function gradeTest()
     //        let result = verifyRegex(value, tests[currentTest].questions[i].correctSuggestion);
             if (tests[currentTest].questions[i].correct.find(f => f === value) === value)
             {
-                correct++;
+                thisRoundCorrect++;
                 correctness.style.backgroundColor = "green";
                 correctness.innerHTML = "Correct!";
             } else {
@@ -114,13 +115,14 @@ function gradeTest()
                     correctInQuestion++;
             }
             if (correctInQuestion == tests[currentTest].questions[i].options.length) {
-                correct++;
+                thisRoundCorrect++;
                 correctness.style.backgroundColor = "green";
                 correctness.innerHTML = "Correct!";
             }
         }
         questionEle.appendChild(correctness);
     }
+    correct += thisRoundCorrect;
     content.removeChild(document.getElementById("grade"));
     let soFarDiv = document.createElement("div");
     if (isAll)
