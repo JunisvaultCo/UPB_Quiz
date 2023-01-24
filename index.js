@@ -69,6 +69,26 @@ function gradeTest()
         toDelete[i].parentElement.removeChild(toDelete[i]);
     let thisRoundCorrect = 0;
     for (let i = 0; i < tests[currentTest].questions.length; i++) {
+        let questionEle = document.getElementById("question" + i);
+        let correctness = document.createElement("div");
+        correctness.innerHTML = "Incorrect!";
+        correctness.style.backgroundColor = "red";
+        correctness.className = "delete";
+        if (tests[currentTest].questions[i].isField !== undefined &&
+            tests[currentTest].questions[i].isField) {
+            let ele = document.getElementById("t_" + i);
+            let value = ele.value;
+            let allowedChars = tests[currentTest].questions[i].allowed;
+            for (let i = 0; i < value.length; i++) {
+                if (allowedChars.find(f => f[0] == value[i]) !== value[i]) {
+                    correctness.innerHTML = "Expresia contine litera ilegala!";
+                    questionEle.appendChild(correctness);
+                    return;
+                }
+            }
+        }
+    }
+    for (let i = 0; i < tests[currentTest].questions.length; i++) {
         let correctness = document.createElement("div");
         correctness.innerHTML = "Incorrect!";
         correctness.style.backgroundColor = "red";
